@@ -1,0 +1,29 @@
+{
+  "name": "c1-34",
+  "version": "1.0.0",
+  "description": "- What tools are we using?       - Passport       - Passport Local (username and password)       - Passport Local Mongoose    - Walk through auth flow    - Discuss sessions       - Express-Session",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tpsnugget/C1-34.git"
+  },
+  "author": "Mike Giebner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tpsnugget/C1-34/issues"
+  },
+  "homepage": "https://github.com/tpsnugget/C1-34#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  }
+}
