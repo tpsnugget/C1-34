@@ -1,10 +1,10 @@
-var   express                 = require("express"),
-      mongoose                = require("mongoose"),
-      passport                = require("passport"),
-      bodyParser              = require("body-parser"),
-      User                    = require("./models/user"),
-      localStrategy           = require("passport-local"),
-      passportLocalMongoose   = require("passport-local-mongoose")
+var express = require("express"),
+   mongoose = require("mongoose"),
+   passport = require("passport"),
+   bodyParser = require("body-parser"),
+   User = require("./models/user"),
+   localStrategy = require("passport-local"),
+   passportLocalMongoose = require("passport-local-mongoose")
 
 const options = {
    useNewUrlParser: true,
@@ -15,14 +15,19 @@ mongoose.connect("mongodb://localhost:27017/auth_demo_app", options)
 
 var app = express()
 app.set("view engine", "ejs")
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(require("express-session")({
    secret: "Rusty is the best and cutest dog in the world",
    resave: false,
    saveUninitialized: false
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
+
+passport.use(new localStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 //==============================================================================
 //    ROUTES
@@ -42,7 +47,7 @@ app.get("/register", (req, res) => {
 
 // Handles user signup
 app.post("/register", (req, res) => {
-   User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
+   User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
       if (err) {
          console.log(err)
          return res.render("register")
@@ -51,6 +56,19 @@ app.post("/register", (req, res) => {
          res.redirect("/secret")
       })
    })
+})
+
+// LOGIN ROUTE, renders login FORM
+app.get("/login", (req, res) => {
+   res.render("login")
+})
+
+// LOGIN Logic
+app.post("/login", passport.authenticate("local", {
+   successRedirect: "/secret",
+   failureRedirect: "/login"
+}), (req, res) => {
+
 })
 //==============================================================================
 //    ROUTES
