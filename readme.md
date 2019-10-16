@@ -26,3 +26,9 @@
 # C1:34:340: Authentication: Secret Page Code Along Pt. 4
    - Added views/login.ejs
    - Added Login ROUTES and login FORM
+
+# C1:34:335 - 341: Colt Steele's Web Dev Bootcamp
+# C1:34:341: Authentication: Secret Page Code Along Pt. 5
+   Added Login and Logout links to home.ejs
+   Added Logout ROUTE
+   Added isLoggedIn Middleware to the /secret ROUTE
