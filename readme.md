@@ -21,3 +21,8 @@
 # C1:34:339: Authentication: Secret Page Code Along Pt. 3
    Add Register Routes
    Add Register Form (/views/register.ejs)
+
+# C1:34:335 - 341: Colt Steele's Web Dev Bootcamp
+# C1:34:340: Authentication: Secret Page Code Along Pt. 4
+   - Added views/login.ejs
+   - Added Login ROUTES and login FORM
